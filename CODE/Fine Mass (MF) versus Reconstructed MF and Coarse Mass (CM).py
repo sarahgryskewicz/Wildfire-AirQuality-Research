@@ -2,15 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib as mplt
 import matplotlib.pyplot as plt
-from metpy.plots import USCOUNTIES
 import matplotlib.ticker as mticker
-from windrose import WindroseAxes
-import cartopy
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
-import cartopy.mpl.gridliner 
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
-import os, sys, glob, os.path
 from matplotlib import rcParams
 from matplotlib import rc
 rc('mathtext', default='regular') 
