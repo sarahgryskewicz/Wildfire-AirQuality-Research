@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ## Plot Map - Topography & IMPROVE Network Sites
-# ### CSU REU 2024 - Sarah Gryskewicz
-# ***
-
-# In[1]:
-
-
 import pandas as pd
 import pylab as pl 
 import numpy as np
