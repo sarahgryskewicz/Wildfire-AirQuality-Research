@@ -1,9 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[3]:
-
-
+# Mass fraction: How much of each species is compared to the whole reconstructed fine mass (RCFM) value
 import pandas as pd
 import pylab as pl 
 import numpy as np
@@ -16,7 +11,8 @@ rcParams['font.family'] = 'Tahoma'
 rcParams['mathtext.fontset'] = 'cm'
 rcParams['mathtext.rm'] = 'Tahoma'
 
-df = pd.read_csv(r"C:\Users\C837388336\Desktop\REU\Data files\Massive Files\2018_2023_df.txt")
+# Read in data
+df = pd.read_csv(r"C:\Users\Desktop\REU\Data\2018_2023_df.txt")
 df['month']=None
 df['year']=None
 df['Date']=pd.to_datetime(df.Date).copy()
@@ -24,6 +20,7 @@ df['month'] = df['Date'].dt.month
 df['year'] = df['Date'].dt.year
 sitenames=df['SiteCode'].unique()
 
+# Find where species are less than 0 in value (not valid data) and drop the sample day that has this data (not a valid sample day)
 df.loc[df.OMCf_Val < 0, 'OMCf_Val']=np.nan
 df.loc[df.ECf_Val < 0, 'ECf_Val']=np.nan
 df.loc[df.ammSO4f_Val < 0, 'ammSO4f_Val']=np.nan
@@ -32,14 +29,13 @@ df.loc[df.SeaSaltf_Val < 0, 'SeaSaltf_Val']=np.nan
 df.loc[df.ammNO3f_Val < 0, 'ammNO3f_Val']=np.nan
 df.dropna(axis=0,how='any',inplace=True,ignore_index=True)
 
-
+# Separate years
 df_others = df.loc[df.year == 2023].copy()
 df_2023 = df_others.groupby(['SiteCode','Date','State']).mean(numeric_only=True)
 df_2023.reset_index(inplace = True)
 df_2023
 
-###########
-# Mass fractions: How much of air was OM compared to other species?
+
 df_totalOM = df_2023.groupby(['SiteCode','Date', 'OMCf_Val', 'ECf_Val', 'ammNO3f_Val', 'SOILf_Val','SeaSaltf_Val', 'RCFM_Val']).mean(numeric_only=True).copy()
 df_totalOM.reset_index(inplace=True)
 df_totalOM = df_totalOM[df_totalOM.month != 8]
@@ -74,12 +70,4 @@ plt.xlim(start,end)
 plt.ylabel('Mass Fraction', fontsize = 15, rotation = 0, labelpad=40)
 plt.xlabel('Date', fontsize = 15)
 plt.title('14-17 July 2023 PM$_{2.5}$ Mass Fractions Across the Northeast', fontsize=20)
-#plt.title('17 July 2023 Species Loadings Across the Northeast', fontsize=15)
-#fig.savefig('/Users/Desktop/REU/Saved Plots/Concentrations/impactsites_loadings_17july.png')
-
-
-# In[ ]:
-
-
-
-
+fig.savefig('/Users/Desktop/REU/Saved Plots/Concentrations/impactsites_loadings_17july.png')
