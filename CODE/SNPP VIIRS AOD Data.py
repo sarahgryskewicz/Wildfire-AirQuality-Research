@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ## Code to Plot VIIRS SNPP Data
-# ### CSU REU 2024 - Sarah Gryskewicz
-# ***
-
-# In[2]:
-
-
 import xarray
 import matplotlib.pyplot as plt
 import cartopy
@@ -27,18 +17,11 @@ rcParams['font.family'] = 'Tahoma'
 rcParams['mathtext.fontset'] = 'cm'
 rcParams['mathtext.rm'] = 'Tahoma'
 
-
-# In[3]:
-
-
+# Access data
 snppdata=xarray.open_dataset("/Users/C837388336/Desktop/REU/Data files/AOD/AOD JJA/AOD_data_2023_JJA.nc")
 snppdata
 
-
-# In[6]:
-
-
-# create a dates dictionary to use for plot titles
+# Create a dates dictionary to use for plot titles
     # be mindful that if you download any date outside of these dates, you must add to this dictionary and change the corresponding numbers
 dates = {
     '0': '1 June 2023', '1': '2 June 2023', '2': '3 June 2023', '3': '4 June 2023', '4': '5 June 2023', 
@@ -66,9 +49,6 @@ dates = {
 }
 
 
-# In[8]:
-
-
 # Make the figure
 fig=plt.figure(figsize=(10,8))
 fig.set_facecolor('whitesmoke')
@@ -92,64 +72,4 @@ cbar = fig.colorbar(cs,cax=cax,**kw)
 ax.set_title(dates['45'] + ' AOD 550nm Land Mean', fontsize=17)
 
 # Save figure
-#fig.savefig('/Users/C837388336/Desktop/REU/Data files/Saved Plots/AOD/July 14-19/july19.png')
-
-EXTRA IDEA
--------------------------
-time = snppdata['time']
-AOD = snppdata['Aerosol_Optical_Thickness_550_Land_Mean']
-fig=plt.figure(figsize=(10,8))
-
-plt.plot(time.coords['time'], time, label='Variable 1')
-
-# Adding another line plot for a different variable
-plt.plot(AOD.coords['Aerosol_Optical_Thickness_550_Land_Mean'], AOD, label='Variable 2')
-
-# Customize plot labels and legend
-plt.xlabel('Time')
-plt.ylabel('Values')
-plt.title('Line Plot of Xarray Data')
-plt.legend()
-
-# Show plot
-plt.show()
-# In[129]:
-
-
-fig, axs = plt.subplots(nrows=3,ncols=2,
-                        subplot_kw={'projection': ccrs.PlateCarree()},
-                        figsize=(11,8.5))
-subplot_titles=['AOD 550 Land Mean', 'AOD 550 Max','AOD 550 Min', 'AOD STD', 'Angstrom Exponent','Angstrom Exp Land Mean','Angstrom Exponent STD']
-axs=axs.flatten()
-day=6
-# Loop over the figures
-for i in range (0,6):
-        axs[i].set_extent([-98, -61, 31, 60], ccrs.PlateCarree())
-        if (i==0):
-            cs=axs[i].pcolormesh(snppdata['Longitude'],snppdata['Latitude'],snppdata['Aerosol_Optical_Thickness_550_Land_Mean'][day,:,:],cmap='jet',vmin=0,vmax=1)
-        elif (i==1):
-            cs=axs[i].pcolormesh(snppdata['Longitude'],snppdata['Latitude'],snppdata['Aerosol_Optical_Thickness_550_Land_Maximum'][day,:,:],cmap='jet',vmin=0,vmax=1)
-        elif (i==2):
-            cs=axs[i].pcolormesh(snppdata['Longitude'],snppdata['Latitude'],snppdata['Aerosol_Optical_Thickness_550_Land_Minimum'][day,:,:],cmap='jet',vmin=0,vmax=1)            
-        elif (i==3):
-            cs=axs[i].pcolormesh(snppdata['Longitude'],snppdata['Latitude'],snppdata['Aerosol_Optical_Thickness_550_Land_Standard_Deviation'][day,:,:],cmap='jet',vmin=0,vmax=1)    
-        elif (i==4):
-            cs=axs[i].pcolormesh(snppdata['Longitude'],snppdata['Latitude'],snppdata['Angstrom_Exponent_Land_Mean'][day,:,:],cmap='cividis',vmin=0,vmax=2)
-        elif (i==5):
-             cs=axs[i].pcolormesh(snppdata['Longitude'],snppdata['Latitude'],snppdata['Angstrom_Exponent_Land_Standard_Deviation'][day,:,:],cmap='Set2',vmin=0,vmax=0.5)
-        axs[i].set_title(subplot_titles[i])
-        axs[i].add_feature(cfeature.STATES) # Plot the state lines
-        axs[i].add_feature(cfeature.BORDERS)
-        axs[i].add_feature(cfeature.COASTLINE)
-        cax,kw = mplt.colorbar.make_axes(axs[i],location='right',pad=0.05,shrink=0.75)
-        cbar = fig.colorbar(cs,cax=cax,**kw)
-        
-fig.suptitle(dates['6'] +' Aerosol Data',fontsize=20)  
-#fig.savefig('/Users/C837388336/Desktop/REU/Data files/Saved Plots/AOD/Multi Panel/AOD_June5_panel.png')
-
-
-# In[ ]:
-
-
-
-
+#fig.savefig('/Users/Desktop/REU/Saved Plots/AOD/july19.png')
