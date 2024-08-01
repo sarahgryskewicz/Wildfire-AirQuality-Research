@@ -1,4 +1,4 @@
 # CSU REU Summer 2024
-Hello! This is a collection of all the work/code I completed during my time at Coloarado State University as a summer research intern. This is also my first time using a GitHub account, specifically my first time designing my own repository, so bear with me!
+Hello! This is a collection of all the work/code I completed during my time at Coloarado State University as a summer research intern. This is also my first time using a GitHub account, specifically my first time designing my own repository, so bear with me as I structure this!
 
 My summer research was focused on investigating the 2023 Canadian wildfires and the impacts that they had on the northeastern United States. I was mentored by Dr. Jenny Hand and Dr. Bonne Ford of the Cooperative Institute for Research in the Atmosphere (CIRA) at CSU. Conducting this research, I used the IMPROVE (**I**nteragency **M**onitoring of **PRO**tected **V**isual **E**nvironments) ground-based network PM2.5 and PM10 speciated aerosol measurements.
