@@ -19,7 +19,7 @@ rcParams['mathtext.fontset'] = 'cm'
 rcParams['mathtext.rm'] = 'Tahoma'
 
 # Access data
-snppdata=xarray.open_dataset("/Users/C837388336/Desktop/REU/Data files/AOD/AOD JJA/AOD_data_2023_JJA.nc")
+snppdata=xarray.open_dataset("/Users/Desktop/REU/Data/AOD/AOD JJA/AOD_data_2023_JJA.nc")
 snppdata
 
 # Create a dates dictionary to use for plot titles
