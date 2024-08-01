@@ -1,15 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
+# Thank you to Dr. Bonne Ford for supplying me with example code to start working with shapefiles/plume data from the HMS fire & smoke product
 
-# ## Plume Plotting
-# ### CSU REU 2024 - Sarah Gryskewicz
-# *This notebook will use both the Multiple Sites code as well as the added HMS smoke plume data to visualize smoke transport*
-# ***
-
-# In[37]:
-
-
-# Import necessary modules
 import io
 import numpy as np
 import pandas as pd
@@ -36,8 +26,8 @@ rcParams['font.size'] = 14
 rcParams['mathtext.fontset'] = 'cm'
 rcParams['mathtext.rm'] = 'Tahoma'
 
-# Put in settings
-    #Transport and regular map bounds:
+# Input map bounds for...
+    # Transport and regular map bounds:
 #map_bounds = [-129, -65, 33,60]
 #map_bounds = [-82, -65, 36.8, 48]
 
@@ -47,11 +37,7 @@ map_bounds = [-89, -65, 38, 54]
 streetmap='True'
 
 
-# In[39]:
-
-
-# This is a function that I found that allows me to spoof that this is not a Python script (this is to get a nice map background)
-# I did not write this
+# This is a function that I found that allows me to spoof that this is not a Python script (this is to get a nice map background). I did not write this
 def image_spoof(self, tile): # this function pretends not to be a Python script
     url = self._image_url(tile) # get the url of the street map API
     req = Request(url) # start request
@@ -64,18 +50,11 @@ def image_spoof(self, tile): # this function pretends not to be a Python script
     return img, self.tileextent(tile), 'lower' # reformat for cartopy
 
 
-# In[41]:
-
-
 # Get text filer
-improve_nm_daily=pd.read_csv(r"C:\Users\C837388336\Desktop\REU\Data files\Massive Files\2018_2023_df.txt",header=0)
+improve_nm_daily=pd.read_csv(r"C:\Users\Desktop\REU\Data\2018_2023_df.txt",header=0)
 improve_nm_daily['Date']=pd.to_datetime(improve_nm_daily['Date'])
 
 
-# In[43]:
-
-
-# Thank you to Dr. Bonne Ford for providing me code to work with shapefiles/plume data from the HMS fire & smoke product
 # Plot shapefiles
 start_datetime=datetime.strptime("06-08-2023", "%m-%d-%Y")
 end_datetime=datetime.strptime("06-08-2023", "%m-%d-%Y")
@@ -154,7 +133,6 @@ for x in range(0, 1+(end_datetime-start_datetime).days):
     m.add_feature(cfeature.STATES, linestyle=':')
     
 
-
     # Shrink the number of fires to only include fires exceeding a certain threshold in fire radiative power (FRP) emitted from wildfires
     fire_threshold = 50         # Exceeding ___ FRP 
     filtered_df = df[df['        FRP'] >= fire_threshold]          # Filter the df so that where df[FRP] exceeds 100, the values will be 
@@ -180,14 +158,10 @@ for x in range(0, 1+(end_datetime-start_datetime).days):
     plt.show()
 
 # Save figure
-#fig.savefig('/Users/C837388336/Desktop/REU/Data files/Saved Plots/Plumes/July/july19.png')
+#fig.savefig('/Users/Desktop/REU/Saved Plots/Plumes/june.png')
 
 
-# ## See how many fires are small compared to larger ones
-
-# In[18]:
-
-
+### Extra: See how many fires are small compared to larger ones
 less = []
 for j in range(len(df[ '        FRP'])):
         if df[ '        FRP'][j] <= fire_threshold:
@@ -196,40 +170,3 @@ for j in range(len(df[ '        FRP'])):
 difference = len(df[ '        FRP']) - len(less)
 print('removed fires: ', len(less))
 print('remaining fires: ', difference)
-
-
-# In[19]:
-
-
-df['        Lon']
-
-
-# In[20]:
-
-
-df['        Lat']
-
-
-# In[21]:
-
-
-df.columns
-
-
-# In[22]:
-
-
-df[ '        FRP']
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
