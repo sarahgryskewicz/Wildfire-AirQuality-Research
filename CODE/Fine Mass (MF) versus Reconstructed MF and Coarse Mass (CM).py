@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 import matplotlib as mplt
@@ -23,23 +17,16 @@ rc('mathtext', default='regular')
 rcParams['font.family'] = 'Tahoma'
 rcParams['mathtext.fontset'] = 'cm'
 rcParams['mathtext.rm'] = 'Tahoma'
-# Tahoma, serif, Verdana
 
 
-# In[4]:
-
-
-df = pd.read_csv(r"C:\Users\C837388336\Desktop\REU\Data files\Massive Files\2018_2023_df.txt")
+# Read in data
+df = pd.read_csv(r"C:\Users\Desktop\REU\Data\2018_2023_df.txt")
 print(df.columns)
 
-
-# In[6]:
-
-
+# Find where species are less than 0 & drop the row with this data (invalid dataset)
 df.loc[df['MF_Val'] < 0, 'MF_Val'] = np.nan
 df.loc[df['CM_calculated_Val'] < 0, 'CM_calculated_Val'] = np.nan
 df.loc[df['RCFM_Val'] < 0, 'RCFM_Val'] = np.nan
-
 df.dropna(axis=0,how='any',inplace=True,ignore_index=True)
 
 df['month']=None
@@ -56,12 +43,10 @@ df_2023 = df_year.groupby(['SiteCode', 'month', 'State']).mean(numeric_only=True
 df_2023.reset_index(inplace=True)
 MF = df_2023['MF_Val'].copy()
 CM = df_2023['CM_calculated_Val'].copy()
-df_2023
 
 
-# In[34]:
-
-
+##############
+# First plot MF vs CM
 fig, axs = plt.subplots(ncols = 1, nrows = len(sitenames), figsize=(10,50))
 axs = axs.flatten()
 for i, sitename in enumerate(sitenames):
@@ -89,15 +74,10 @@ plt.tight_layout()
 plt.show()
 
 
-# In[9]:
-
-
+##############
+# Next, plot average JJA MF vs CM
 df_2023_new = df_2023.groupby(['month']).mean(numeric_only=True)
 df_2023_new.reset_index(inplace=True)
-df_2023_new
-
-
-# In[12]:
 
 
 fig,ax = plt.subplots(ncols=1, nrows=1, figsize=(8,4))
@@ -110,7 +90,6 @@ ax.set_xticks(months, ['June', 'July', 'August'], fontsize = 9)
 #plt.xticklabels(['June', 'July', 'August'], fontsize = 9)
 ax.grid(True, color ='gainsboro')
 ax.set_ylim(3,10)
-#state = df_2023.loc[df_2023.SiteCode == sitename].iloc[0]
 ax.set_title('Northeast 2023 Average JJA Fine vs Coarse Particulate Mass', fontsize=12)
 
 ax2 = ax.twinx()
@@ -122,16 +101,12 @@ lines, labels = ax.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper right')
 
-
 plt.tight_layout()
 plt.show()
 
 
-# ## MF vs RCFM
-
-# In[4]:
-
-
+##############
+# Finally, plot MF vs RCFM
 dates = df['Date'].unique()
 start_date = pd.to_datetime('2023-06-05')
 end_date = pd.to_datetime('2023-06-11')
@@ -145,23 +120,18 @@ sites_non = ['PACK1', 'LYEB1', 'LOND1', 'GRGU1', 'CABA1', 'MOOS1', 'PRIS1', 'PEN
 # Filtering out rows where SiteCode is in sites_non
 df = df[~df['SiteCode'].isin(sites_non)]
 sitenames = df['SiteCode'].unique()
-# 30,13 (june)
-# 15,13 (july)
 fig, axs = plt.subplots(ncols = 2, nrows = ((len(sitenames)+1)//2), figsize=(15,13))
 fig.set_facecolor("whitesmoke")
 axs=axs.flatten()
 for j, sitename in enumerate(sitenames):
     data = df.loc[df.SiteCode == sitename]
-    
-    # Calculate cumulative heights for stacking bars
+
+    # Species for stacking 
     MF = data['MF_Val'].values
     RCFM = data['RCFM_Val'].values
     state = data['State'].iloc[0]
-    
-    #axs[j].set_facecolor('snow')
     axs[j].plot(data['Date'], data['MF_Val'], label='MF', color='purple', alpha=0.6)
     axs[j].plot(data['Date'], data['RCFM_Val'], label='RCFM', linestyle = '--')
-   
     axs[j].legend(loc='upper left')
     axs[j].set_ylabel('μg m$^{-3}$', fontsize = 10, rotation = 0, labelpad = 15)
     axs[j].set_xlabel('Date', fontsize = 10)
@@ -173,17 +143,4 @@ for j, sitename in enumerate(sitenames):
 
 plt.tight_layout()
 plt.show()
-fig.savefig('/Users/C837388336/Desktop/REU/Data files/Saved Plots/MF vs RCFM (june).png')
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+fig.savefig('/Users/Desktop/REU/Saved Plots/MF vs RCFM (june).png')
