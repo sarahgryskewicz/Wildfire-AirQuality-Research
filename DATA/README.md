@@ -17,3 +17,12 @@ The AOD data that I used is from the **S**uomi **N**ational **P**olar-Orbiting *
 </p>
 More on SNPP VIIRS: https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/viirs/ </p>
 SNPP VIIRS archived data: https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/AERDB_D3_VIIRS_SNPP/2023
+
+
+## IOWA STATE MESONET ARCHIVED DATA
+The Iowa Environmental Mesonet (IEM) collects environmental data from cooperating members with observing networks. The data are stored and made available at: https://mesonet.agron.iastate.edu/ </p> 
+Wind speed, wind direction, temperature, and relative humidity measurements were retrieved from this database. </p>
+
+Other IEM directories I used in my research are: </p>
+> https://mesonet.agron.iastate.edu/archive/data/2023/06/06/ </p>
+https://mtarchive.geol.iastate.edu/2024/08/19/ </p>
