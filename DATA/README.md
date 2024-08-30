@@ -7,7 +7,11 @@ The data I used from the IMPROVE network is included in this directory. More inf
  </p>
 IMPROVE website: https://vista.cira.colostate.edu/Improve/
 </p>
-IMPROVE Federal Database: https://views.cira.colostate.edu/fed/
+IMPROVE Federal Database: https://views.cira.colostate.edu/fed/ </p>
+
+![image](https://github.com/user-attachments/assets/4644325b-f249-4af8-a436-a319513fae90) </p> 
+Image taken by S. Gryskewicz of a sampler (Module C), at an IMPROVE site (FOCO1). More information on this sampler can be found via the IMPROVE website. </p>
+
 
 
 ## AEROSOL OPTICAL DEPTH DATA
