@@ -10,5 +10,5 @@ Future work of my research consists of...</p>
 - Understanding how local topographical features influenced smoke transport, species concentrations, and species compositions </p>
 - Understading how aerosol properties differed between long-range and short-range smoke transport as well as how these differences affected their ability to take up water (hygroscopicity)
 
- ![image](https://github.com/user-attachments/assets/ff43d2a6-e20f-4af2-8729-c0f810b7d59c) </p>
+![image](https://github.com/user-attachments/assets/c9db57b2-3af9-4332-8a31-6126daea069b) </p>
 Image taken by S. Gryskewicz on 7 June 2024 of air quality conditions during a high-impact smoke event in the NE in Wilkes-Barre, PA.
