@@ -7,5 +7,5 @@ I used various databases from ground-based surface stations and satellite measur
 
 Future work of my research consists of...</p>
 - Understanding why certain inorganic species concentrations, such as ammonium nitrate in June 2023, were spiking in the NE during these events </p>
-- Understanding how local topographical features influenced smoke transport and species concentrations and compositions </p>
-- Understading how the properties of the aerosols differed between long-range and short-range transport, and how these differences affected their ability to take up water (hygroscopicity) </p>
+- Understanding how local topographical features influenced smoke transport, species concentrations, and species compositions </p>
+- Understading how aerosol properties differed between long-range and short-range smoke transport as well as how these differences affected their ability to take up water (hygroscopicity)
