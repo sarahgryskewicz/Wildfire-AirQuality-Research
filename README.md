@@ -9,3 +9,5 @@ Future work of my research consists of...</p>
 - Understanding why certain inorganic species concentrations, such as ammonium nitrate in June 2023, were spiking in the NE during these events </p>
 - Understanding how local topographical features influenced smoke transport, species concentrations, and species compositions </p>
 - Understading how aerosol properties differed between long-range and short-range smoke transport as well as how these differences affected their ability to take up water (hygroscopicity)
+
+![image](https://github.com/user-attachments/assets/f2cb6b36-ea61-4110-bb81-c745410db85e)
