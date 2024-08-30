@@ -9,4 +9,6 @@ Future work of my research consists of...</p>
 - Understanding why certain inorganic species concentrations, such as ammonium nitrate in June 2023, were spiking in the NE during these events </p>
 - Understanding how local topographical features influenced smoke transport, species concentrations, and species compositions </p>
 - Understading how aerosol properties differed between long-range and short-range smoke transport as well as how these differences affected their ability to take up water (hygroscopicity)
-![image](https://github.com/user-attachments/assets/5c283656-24f5-41a7-8d6a-227e9af644ce)
+
+ ![image](https://github.com/user-attachments/assets/ff43d2a6-e20f-4af2-8729-c0f810b7d59c)
+Image taken by S. Gryskewicz on 7 June 2024 of air quality conditions during a high-impact smoke event in the NE in Wilkes-Barre, PA.
